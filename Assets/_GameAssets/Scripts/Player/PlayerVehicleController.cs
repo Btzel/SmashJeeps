@@ -43,11 +43,13 @@ public class PlayerVehicleController : MonoBehaviour
     private void FixedUpdate()
     {
         UpdateSuspension();
-        // STEERING
-        // ACCELERATION
+        UpdateSteering();
+        UpdateAcceleration();
         // BRAKING
         // AIR RESISTANCE
     }
+
+    
 
     private void UpdateSuspension()
     {
@@ -66,6 +68,52 @@ public class PlayerVehicleController : MonoBehaviour
 
             _vehicleRigidbody.AddForceAtPosition(force * transform.up, GetSpringPosition(id));
 
+        }
+    }
+
+    private void UpdateSteering()
+    {
+        foreach(WheelType wheelType in _wheels)
+        {
+            if (!IsGrounded(wheelType))
+            {
+                continue;
+            }
+
+            Vector3 springPosition = GetSpringPosition(wheelType);
+            Vector3 slideDirection = GetWheelSlideDirection(wheelType);
+            float slideVelocity = Vector3.Dot(slideDirection, _vehicleRigidbody.GetPointVelocity(springPosition));
+            float desiredVelocityChange = GetWheelGripFactor(wheelType) * -slideVelocity;
+            float desiredAcceleration = desiredVelocityChange / Time.fixedDeltaTime;
+            Vector3 force = desiredAcceleration * slideDirection * _vehicleSettings.TireMass;
+            _vehicleRigidbody.AddForceAtPosition(force, GetWheelTorquePosition(wheelType));
+        }
+    }
+
+    private void UpdateAcceleration()
+    {
+        if (Mathf.Approximately(_accelerateInput, 0f))
+            return;
+
+        float forwardSpeed = Vector3.Dot(transform.forward, _vehicleRigidbody.linearVelocity);
+        bool movingForward = forwardSpeed > 0f;
+        float speed = Mathf.Abs(forwardSpeed);
+
+        if (movingForward && speed > _vehicleSettings.MaxSpeed)
+            return;
+        else if (!movingForward && speed > _vehicleSettings.MaxReverseSpeed)
+            return;
+
+        foreach (WheelType wheelType in _wheels)
+        {
+            if (!IsGrounded(wheelType))
+            {
+                continue;
+            }
+
+            Vector3 position = GetWheelTorquePosition(wheelType);
+            Vector3 wheelForward = GetWheelRollDirection(wheelType);
+            _vehicleRigidbody.AddForceAtPosition(_accelerateInput * wheelForward * _vehicleSettings.AcceleratePower, position);
         }
     }
 
@@ -123,6 +171,73 @@ public class PlayerVehicleController : MonoBehaviour
             _ => default
 
         };
+    }
+    private Vector3 GetWheelTorquePosition(WheelType wheelType)
+    {
+        return transform.localToWorldMatrix.MultiplyPoint3x4(GetWheelRelativeTorquePosition(wheelType));
+    }
+
+    private Vector3 GetWheelRelativeTorquePosition(WheelType wheelType)
+    {
+        Vector3 boxSize = _vehicleCollider.size;
+
+        float paddingX = _vehicleSettings.WheelsPaddingX;
+        float paddingZ = _vehicleSettings.WheelsPaddingZ;
+
+        return wheelType switch
+        {
+            WheelType.FrontLeft => new Vector3(
+                boxSize.x * (paddingX - 0.5f),
+                0f,
+                boxSize.z * (0.5f - paddingZ)),
+            WheelType.FrontRight => new Vector3(
+                boxSize.x * (0.5f - paddingX),
+                0f,
+                boxSize.z * (0.5f - paddingZ)),
+            WheelType.BackLeft => new Vector3(
+                boxSize.x * (paddingX - 0.5f),
+                0f,
+                boxSize.z * (paddingZ - 0.5f)),
+            WheelType.BackRight => new Vector3(
+                boxSize.x * (0.5f - paddingX),
+                0f,
+                boxSize.z * (paddingZ - 0.5f)),
+            _ => default
+
+        };
+    }
+
+    private Vector3 GetWheelSlideDirection(WheelType wheelType)
+    {
+        Vector3 forward = GetWheelRollDirection(wheelType);
+
+        return Vector3.Cross(transform.up, forward);
+    }
+
+    private Vector3 GetWheelRollDirection(WheelType wheelType)
+    {
+        bool frontWheels = wheelType == WheelType.FrontLeft || wheelType == WheelType.FrontRight;
+
+        if (frontWheels)
+        {
+            var steerQuaternion = Quaternion.AngleAxis(_steerInput * _vehicleSettings.SteerAngle, Vector3.up);
+            return steerQuaternion * transform.forward;
+        }
+        else
+        {
+            return transform.forward;
+        }
+    }
+
+    private float GetWheelGripFactor(WheelType wheelType)
+    {
+        bool frontWheels = wheelType == WheelType.FrontLeft || wheelType == WheelType.FrontRight;
+        return frontWheels ? _vehicleSettings.FrontWheelsGripFactor : _vehicleSettings.RearWheelsGripFactor;
+    }
+
+    private bool IsGrounded(WheelType wheelType)
+    {
+        return _springDatas[wheelType].currentLength < _vehicleSettings.SpringRestLength;
     }
 
     private void SetSteerInput(float steerInput)
