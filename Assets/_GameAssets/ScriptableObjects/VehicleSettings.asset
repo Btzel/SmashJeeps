@@ -22,5 +22,7 @@ MonoBehaviour:
   _rearWheelsGripFactor: 0.9
   _tireMass: 1
   _acceleratePower: 300
+  _brakesPower: 1.5
   _maxSpeed: 22
   _maxReverseSpeed: 12
+  _airResistance: 209
