@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using Unity.Netcode;
@@ -44,6 +45,14 @@ public class PlayerVehicleController : NetworkBehaviour
         }
     }
 
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+
+        _vehicleRigidbody.isKinematic = true;
+        SetOwnerRigidbodyKinematicAsync();
+    }
+
     private void Update()
     {
         if (!IsOwner) return;
@@ -62,9 +71,6 @@ public class PlayerVehicleController : NetworkBehaviour
         UpdateBrakes();
         UpdateAirResistance();
     }
-
-   
-
 
     private void UpdateSuspension()
     {
@@ -326,6 +332,15 @@ public class PlayerVehicleController : NetworkBehaviour
     public float GetSpringCurrentLength(WheelType wheelType)
     {
         return _springDatas[wheelType].currentLength;
+    }
+
+    private async void SetOwnerRigidbodyKinematicAsync()
+    {
+        if (IsOwner)
+        {
+            await UniTask.DelayFrame(1);
+            _vehicleRigidbody.isKinematic = false;
+        }
     }
 }
 
