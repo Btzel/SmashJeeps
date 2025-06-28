@@ -25,4 +25,4 @@ MonoBehaviour:
   _brakesPower: 1.5
   _maxSpeed: 22
   _maxReverseSpeed: 12
-  _airResistance: 209
+  _airResistance: 5

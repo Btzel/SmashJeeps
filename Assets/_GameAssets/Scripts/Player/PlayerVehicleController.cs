@@ -29,6 +29,10 @@ public class PlayerVehicleController : MonoBehaviour
     private Dictionary<WheelType, SpringData> _springDatas;
     private float _steerInput;
     private float _accelerateInput;
+
+    public Vector3 Velocity => _vehicleRigidbody.linearVelocity;
+    public Vector3 Forward => transform.forward;
+    public VehicleSettingsSO Settings => _vehicleSettings;
     private void Awake()
     {
         _springDatas = new Dictionary<WheelType, SpringData>();
@@ -311,6 +315,11 @@ public class PlayerVehicleController : MonoBehaviour
     private void SetAccelerateInput(float accelerateInput)
     {
         _accelerateInput = Mathf.Clamp(accelerateInput, -1f, 1f);
+    }
+
+    public float GetSpringCurrentLength(WheelType wheelType)
+    {
+        return _springDatas[wheelType].currentLength;
     }
 }
 

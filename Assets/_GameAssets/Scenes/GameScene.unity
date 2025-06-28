@@ -1088,6 +1088,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc6d4662f820594fbd491f9b0416f6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerVehicleController: {fileID: 221862493713875370}
+  _wheelFrontLeft: {fileID: 221862493713849751}
+  _wheelFrontRight: {fileID: 221862493713849753}
+  _wheelBackLeft: {fileID: 221862493713849747}
+  _wheelBackRight: {fileID: 221862493713849749}
+  _wheelSpinSpeed: 70
+  _wheelYWhenSpringMin: 0.6
+  _wheelYWhenSpringMax: 0.3
 --- !u!1 &221862493713875369
 GameObject:
   m_ObjectHideFlags: 0
