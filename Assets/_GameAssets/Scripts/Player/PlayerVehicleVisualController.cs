@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using Unity.Hierarchy;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerVehicleVisualController : MonoBehaviour
+public class PlayerVehicleVisualController : NetworkBehaviour
 {
     [Header("References")]
     [SerializeField] private PlayerVehicleController _playerVehicleController;
@@ -38,6 +39,8 @@ public class PlayerVehicleVisualController : MonoBehaviour
     }
     private void Update()
     {
+        if (!IsOwner) return;
+
         UpdateVisualStates();
         RotateWheels();
         SetSuspension();

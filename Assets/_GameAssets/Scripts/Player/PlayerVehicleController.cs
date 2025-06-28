@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerVehicleController : MonoBehaviour
+public class PlayerVehicleController : NetworkBehaviour
 {
     public class SpringData
     {
@@ -45,12 +46,16 @@ public class PlayerVehicleController : MonoBehaviour
 
     private void Update()
     {
+        if (!IsOwner) return;
+
         SetSteerInput(Input.GetAxis("Horizontal"));
         SetAccelerateInput(Input.GetAxis("Vertical"));
     }
 
     private void FixedUpdate()
     {
+        if (!IsOwner) return;
+
         UpdateSuspension();
         UpdateSteering();
         UpdateAcceleration();
@@ -58,7 +63,8 @@ public class PlayerVehicleController : MonoBehaviour
         UpdateAirResistance();
     }
 
-    
+   
+
 
     private void UpdateSuspension()
     {
