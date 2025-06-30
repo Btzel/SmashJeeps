@@ -1228,6 +1228,7 @@ GameObject:
   - component: {fileID: 8818272106637115120}
   - component: {fileID: 2995803994610001434}
   - component: {fileID: 3384238347640791225}
+  - component: {fileID: 2526413926193524612}
   - component: {fileID: 283996414135697453}
   - component: {fileID: 5643267596438574388}
   - component: {fileID: 7554556524211166694}
@@ -1346,6 +1347,19 @@ MonoBehaviour:
   UseRigidBodyForMotion: 0
   AutoUpdateKinematicState: 1
   AutoSetKinematicOnDespawn: 1
+--- !u!114 &2526413926193524612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7033937159113744388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ec65e5890ff85447bc0c7b56bddebe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
 --- !u!114 &283996414135697453
 MonoBehaviour:
   m_ObjectHideFlags: 0

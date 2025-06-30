@@ -94,7 +94,7 @@ public class PlayerVehicleController : NetworkBehaviour
 
     private void UpdateSteering()
     {
-        foreach(WheelType wheelType in _wheels)
+        foreach (WheelType wheelType in _wheels)
         {
             if (!IsGrounded(wheelType))
             {
@@ -108,6 +108,8 @@ public class PlayerVehicleController : NetworkBehaviour
             float desiredAcceleration = desiredVelocityChange / Time.fixedDeltaTime;
             Vector3 force = desiredAcceleration * slideDirection * _vehicleSettings.TireMass;
             _vehicleRigidbody.AddForceAtPosition(force, GetWheelTorquePosition(wheelType));
+            
+            
         }
     }
 

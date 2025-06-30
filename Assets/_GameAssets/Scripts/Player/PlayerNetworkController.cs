@@ -7,7 +7,7 @@ public class PlayerNetworkController : NetworkBehaviour
     [Header("References")]
     [SerializeField] private CinemachineCamera _playerCamera;
 
-    
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
