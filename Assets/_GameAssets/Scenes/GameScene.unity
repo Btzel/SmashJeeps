@@ -608,6 +608,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9954345821a497241a9d3f43e77370c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _skillImage: {fileID: 1223502887}
+  _skillNameText: {fileID: 689571375}
+  _timerCounterText: {fileID: 1718053716}
+  _timerCounterParentTransform: {fileID: 361621566}
 --- !u!1 &603414555
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,6 +2418,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
+  _mysteryBoxSkills:
+  - {fileID: 11400000, guid: 87a97629498511c4d84d08e72d8916fe, type: 2}
+  - {fileID: 11400000, guid: 1ca2ef8a53a14104ebdb649d32e7ea62, type: 2}
+  - {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+  - {fileID: 11400000, guid: bb376ab447142d64b9ed54a202612892, type: 2}
+  - {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
   _boxAnimator: {fileID: 8292378737478736428}
   _collider: {fileID: 7628257079380175896}
   _respawnTimer: 5
