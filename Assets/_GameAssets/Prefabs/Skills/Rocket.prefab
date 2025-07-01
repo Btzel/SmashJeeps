@@ -96,6 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3874012127341705568}
   - component: {fileID: 5802427499107474925}
+  - component: {fileID: 923222047911670447}
   - component: {fileID: 8116279058947779904}
   - component: {fileID: 4362472175067333149}
   - component: {fileID: 1668742289992405965}
@@ -135,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3294784890
+  GlobalObjectIdHash: 959152327
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 8
@@ -148,6 +149,22 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &923222047911670447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232702023334799661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8727fc1ac80939e48bcc0256ac494cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  _rocketCollider: {fileID: 1198803786369897298}
+  _movementSpeed: 40
+  _rotationSpeed: 300
 --- !u!114 &8116279058947779904
 MonoBehaviour:
   m_ObjectHideFlags: 0

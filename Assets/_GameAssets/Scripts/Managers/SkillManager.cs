@@ -87,7 +87,9 @@ public class SkillManager : NetworkBehaviour
                 }
                 else
                 {
-                    // ROCKET SPECIAL
+                    PlayerSkillController playerSkillController = client.PlayerObject.GetComponent<PlayerSkillController>();
+                    networkObject.transform.localPosition = playerSkillController.GetRocketLaunchPosition();
+                    return;
                 }
 
                 if (skillData.SkillData.ShouldBeAttachedToParent)
