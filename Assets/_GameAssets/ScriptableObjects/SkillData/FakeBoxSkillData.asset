@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d877bf074b2769846b486b30596b9f78, type: 3}
   m_Name: FakeBoxSkillData
   m_EditorClassIdentifier: 
-  _skillPrefab: {fileID: 0}
+  _skillPrefab: {fileID: 8611169950654433258, guid: 994045ea7bcf5fe40a0906e6a5bb35e1, type: 3}
+  _skillOffset: {x: 0, y: 1.5, z: -2.5}
+  _spawnAmountOrTimer: 0
+  _shouldBeAttachedToParent: 0
+  _respawnTimer: 5
+  _damageAmount: 100
