@@ -19,6 +19,9 @@ public class SkillsUI : MonoBehaviour
     private void Start()
     {
         SetSkillToNone();
+
+        _timerCounterParentTransform.gameObject.SetActive(false);
+        _timerCounterParentTransform.localScale = Vector3.one;
     }
 
     public void SetSkill(string skillName, Sprite skillSprite)

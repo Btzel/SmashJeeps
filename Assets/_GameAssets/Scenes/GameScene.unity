@@ -275,6 +275,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
   - {fileID: 11400000, guid: bb376ab447142d64b9ed54a202612892, type: 2}
   - {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2031,7 +2034,7 @@ GameObject:
   - component: {fileID: 1761664018}
   - component: {fileID: 1761664017}
   - component: {fileID: 1761664016}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2416,7 +2419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2832242282624810101, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2832242282624810101, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: m_LocalPosition.z
