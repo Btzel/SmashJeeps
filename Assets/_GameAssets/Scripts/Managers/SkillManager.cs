@@ -4,17 +4,65 @@ using UnityEngine;
 
 public class SkillManager : NetworkBehaviour
 {
+    public static SkillManager Instance { get; private set; }
+
     [SerializeField] private MysteryBoxSkillsSO[] _mysteryBoxSkills;
 
     private Dictionary<SkillType, MysteryBoxSkillsSO> _skillsDictionary;
 
     private void Awake()
     {
+        Instance = this;
+
         _skillsDictionary = new Dictionary<SkillType, MysteryBoxSkillsSO>();
 
         foreach(MysteryBoxSkillsSO skill in _mysteryBoxSkills)
         {
             _skillsDictionary[skill.SkillType] = skill;
+        }
+    }
+
+    public void ActivateSkill(SkillType skillType,Transform playerTransform, ulong spawnerClientId)
+    {
+        SkillTransformDataSerializable skillTransformData = new SkillTransformDataSerializable(
+            playerTransform.position,
+            playerTransform.rotation,
+            skillType,
+            playerTransform.GetComponent<NetworkObject>()
+            );
+
+        if (!IsServer)
+        {
+            RequestSpawnRpc(skillTransformData, spawnerClientId);
+            return;
+        }
+
+        SpawnSkill(skillTransformData, spawnerClientId);
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    private void RequestSpawnRpc(SkillTransformDataSerializable skillTransformDataSerializable,
+        ulong spawnerClientId)
+    {
+        SpawnSkill(skillTransformDataSerializable, spawnerClientId);
+    }
+
+    private void SpawnSkill(SkillTransformDataSerializable skillTransformDataSerializable,
+        ulong spawnerClientId)
+    {
+        if(!_skillsDictionary.TryGetValue(skillTransformDataSerializable.SkillType,out MysteryBoxSkillsSO skillData))
+        {
+            Debug.LogError($"Spawn Skill: {skillTransformDataSerializable.SkillType} not found");
+            return;
+        }
+
+        if(skillTransformDataSerializable.SkillType == SkillType.Mine)
+        {
+            // Mine Special
+        }
+        else
+        {
+            Spawn(skillTransformDataSerializable, spawnerClientId, skillData);
         }
     }
 
@@ -52,7 +100,10 @@ public class SkillManager : NetworkBehaviour
 
                 UpdateSkillPositionRpc(networkObject.NetworkObjectId, positionDataSerializable);
 
-                // will be continued
+                if (!skillData.SkillData.ShouldBeAttachedToParent)
+                {
+                    networkObject.TryRemoveParent();
+                }
             }
         }
     }

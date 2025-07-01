@@ -29,6 +29,8 @@ public class PlayerSkillController : NetworkBehaviour
     {
         if (!_hasSkillAlready) return;
 
+        SkillManager.Instance.ActivateSkill(_mysteryBoxSkill.SkillType,transform,OwnerClientId);
+
         SkillsUI.Instance.SetSkillToNone();
         _hasSkillAlready = false;
         Debug.Log($"Skill Used: {_mysteryBoxSkill.SkillType}");

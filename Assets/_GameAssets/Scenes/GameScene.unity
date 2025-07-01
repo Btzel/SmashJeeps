@@ -2450,6 +2450,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 825129440
