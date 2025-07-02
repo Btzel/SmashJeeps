@@ -436,6 +436,7 @@ GameObject:
   - component: {fileID: 1872268088251976938}
   - component: {fileID: 5100773391311533070}
   - component: {fileID: 8528564374103043435}
+  - component: {fileID: 4042454586443275330}
   m_Layer: 0
   m_Name: FakeBox
   m_TagString: Untagged
@@ -538,3 +539,15 @@ MonoBehaviour:
   _fakeBoxCollider: {fileID: 5100773391311533070}
   _arrowTransform: {fileID: 8617423863626741232}
   _animationDuration: 0.5
+--- !u!114 &4042454586443275330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5486860938787672140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af3b84e6ee2107428dad7add4753ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

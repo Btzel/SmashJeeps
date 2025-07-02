@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Hierarchy;
 using Unity.Netcode;
@@ -28,6 +29,22 @@ public class PlayerVehicleVisualController : NetworkBehaviour
 
     };
 
+    public override void OnNetworkSpawn()
+    {
+        if (!IsOwner) return;
+
+        _playerVehicleController.OnVehicleCrashed += PlayerVehicleController_OnVehicleCrashed;
+    }
+
+    private void PlayerVehicleController_OnVehicleCrashed()
+    {
+        enabled = false;
+    }
+
+    public override void OnNetworkDespawn()
+    {
+        _playerVehicleController.OnVehicleCrashed -= PlayerVehicleController_OnVehicleCrashed;
+    }
 
     private void Start()
     {
