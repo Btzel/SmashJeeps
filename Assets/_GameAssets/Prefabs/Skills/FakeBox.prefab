@@ -551,3 +551,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af3b84e6ee2107428dad7add4753ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  _mysteryBoxSkill: {fileID: 11400000, guid: 87a97629498511c4d84d08e72d8916fe, type: 2}

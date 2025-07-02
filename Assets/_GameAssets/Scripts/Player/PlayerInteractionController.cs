@@ -61,6 +61,16 @@ public class PlayerInteractionController : NetworkBehaviour
                 return;
             }
             damageable.Damage(_playerVehicleController);
+            SetKillerUIRpc(damageable.GetKillerClientId(),
+                RpcTarget.Single(damageable.GetKillerClientId(), RpcTargetUse.Temp));
+        }
+    }
+    [Rpc(SendTo.SpecifiedInParams)]
+    private void SetKillerUIRpc(ulong killerClientId, RpcParams rpcParams)
+    {
+        if(NetworkManager.Singleton.ConnectedClients.TryGetValue(killerClientId, out var killerClient))
+        {
+            KillScreenUI.Instance.SetSmashUI("Alper");
         }
     }
 

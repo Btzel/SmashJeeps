@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
+  _mysteryBoxSkill: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
 --- !u!1 &1570011000463315955
 GameObject:
   m_ObjectHideFlags: 0

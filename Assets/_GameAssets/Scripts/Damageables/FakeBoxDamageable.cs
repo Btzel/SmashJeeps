@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FakeBoxDamageable : NetworkBehaviour, IDamageable
 {
+    [SerializeField] private MysteryBoxSkillsSO _mysteryBoxSkill;
     public override void OnNetworkSpawn()
     {
         if (!IsOwner) return;
@@ -36,6 +37,7 @@ public class FakeBoxDamageable : NetworkBehaviour, IDamageable
     public void Damage(PlayerVehicleController playerVehicleController)
     {
         playerVehicleController.CrashVehicle();
+        KillScreenUI.Instance.SetSmashedUI("ALPER", _mysteryBoxSkill.SkillData.RespawnTimer);
         DestroyRpc();
     }
 
@@ -65,5 +67,10 @@ public class FakeBoxDamageable : NetworkBehaviour, IDamageable
         {
             Destroy(gameObject);
         }
+    }
+
+    public ulong GetKillerClientId()
+    {
+        return OwnerClientId;
     }
 }
