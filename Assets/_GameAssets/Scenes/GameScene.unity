@@ -3308,6 +3308,11 @@ MonoBehaviour:
   - {fileID: 1533578702}
   - {fileID: 549243670}
   - {fileID: 204668252}
+  _respawnPointTransformList:
+  - {fileID: 1901837995}
+  - {fileID: 1533578702}
+  - {fileID: 549243670}
+  - {fileID: 204668252}
 --- !u!4 &1779977730
 Transform:
   m_ObjectHideFlags: 0

@@ -73,4 +73,9 @@ public class FakeBoxDamageable : NetworkBehaviour, IDamageable
     {
         return OwnerClientId;
     }
+
+    public int GetRespawnTimer()
+    {
+        return _mysteryBoxSkill.SkillData.RespawnTimer;
+    }
 }

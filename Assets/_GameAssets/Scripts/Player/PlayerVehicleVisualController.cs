@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Hierarchy;
 using Unity.Netcode;
@@ -10,7 +11,9 @@ public class PlayerVehicleVisualController : NetworkBehaviour
     [SerializeField] private PlayerVehicleController _playerVehicleController;
     [SerializeField] private Transform _wheelFrontLeft, _wheelFrontRight,_wheelBackLeft,_wheelBackRight;
     [SerializeField] private float _wheelSpinSpeed, _wheelYWhenSpringMin, _wheelYWhenSpringMax;
-
+    [SerializeField] private Transform _jeepVisualTransform;
+    [SerializeField] private Collider _playerCollider;
+     
     private Quaternion _wheelFrontLeftRoll;
     private Quaternion _wheelFrontRightRoll;
 
@@ -129,4 +132,29 @@ public class PlayerVehicleVisualController : NetworkBehaviour
             _wheelYWhenSpringMin + (_wheelYWhenSpringMax - _wheelYWhenSpringMin) * springBackRightRatio,
             _wheelBackRight.localPosition.z);
     }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    private void SetJeepVisualActiveRpc(bool isActive)
+    {
+        _jeepVisualTransform.gameObject.SetActive(isActive);
+    }
+
+    private IEnumerator SetVehicleVisualActiveCoroutine(float delay)
+    {
+        SetJeepVisualActiveRpc(false);
+        _playerCollider.enabled = false;
+
+        yield return new WaitForSeconds(delay);
+
+        SetJeepVisualActiveRpc(true);
+        _playerCollider.enabled = true;
+
+        enabled = true;
+    }
+
+    public void SetVehicleVisualActive(float delay)
+    {
+        StartCoroutine(SetVehicleVisualActiveCoroutine(delay));
+    }
+
 }
