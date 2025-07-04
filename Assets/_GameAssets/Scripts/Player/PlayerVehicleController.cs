@@ -61,6 +61,7 @@ public class PlayerVehicleController : NetworkBehaviour
     private void Update()
     {
         if (!IsOwner) return;
+        if (GameManager.Instance.GetGameState() != GameState.Playing) return;
 
         SetSteerInput(Input.GetAxis("Horizontal"));
         SetAccelerateInput(Input.GetAxis("Vertical"));
@@ -71,6 +72,7 @@ public class PlayerVehicleController : NetworkBehaviour
     private void FixedUpdate()
     {
         if (!IsOwner) return;
+        if (GameManager.Instance.GetGameState() == GameState.GameOver) return;
 
         UpdateSuspension();
         UpdateSteering();

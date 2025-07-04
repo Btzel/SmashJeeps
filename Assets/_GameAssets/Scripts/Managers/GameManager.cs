@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : NetworkBehaviour
 {
+    public static GameManager Instance { get; private set; }
     public event Action<GameState> OnGameStateChanged;
 
     [SerializeField] private GameDataSO _gameData;
@@ -11,6 +12,10 @@ public class GameManager : NetworkBehaviour
 
     private NetworkVariable<int> _gameTimer = new NetworkVariable<int>(0);
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     public override void OnNetworkSpawn()
     {
         if (IsServer)
@@ -66,5 +71,10 @@ public class GameManager : NetworkBehaviour
         _currentGameState = newGameState;
         OnGameStateChanged?.Invoke(newGameState);
         Debug.Log($"Game State: {newGameState}");
+    }
+
+    public GameState GetGameState()
+    {
+        return _currentGameState;
     }
 }

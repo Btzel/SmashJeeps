@@ -65,6 +65,8 @@ public class SpawnManager : NetworkBehaviour
     private IEnumerator RespawnPlayerCoroutine(int respawnTimer, ulong clientId)
     {
         yield return new WaitForSeconds(respawnTimer);
+        if (GameManager.Instance.GetGameState() != GameState.Playing) yield break;
+
 
         if (_respawnPointTransformList.Count == 0)
         {

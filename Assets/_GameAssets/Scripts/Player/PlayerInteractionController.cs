@@ -38,6 +38,8 @@ public class PlayerInteractionController : NetworkBehaviour
     {
         if (!IsOwner) return;
         if (_isCrashed) return;
+        if (GameManager.Instance.GetGameState() != GameState.Playing) return;
+
 
         CheckCollectibleCollision(other);
         CheckDamageableCollision(other);
