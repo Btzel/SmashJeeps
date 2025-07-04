@@ -1,16 +1,19 @@
+using TMPro;
 using UnityEngine;
 
 public class TimerUI : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static TimerUI Instance {get; private set;}
+
+    [SerializeField] private TMP_Text _timerText;
+
+    private void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetTimerUI(int timerCounter)
     {
-        
+        _timerText.text = timerCounter.ToString();
     }
 }
