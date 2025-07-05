@@ -27,9 +27,12 @@ public class ApplicationController : MonoBehaviour
             hostSingletonInstance.CreateHost();
 
             ClientSingleton clientSingletonInstance = Instantiate(_clientSingletonPrefab);
-            await clientSingletonInstance.CreateClient();
+            bool isAuthenticated = await clientSingletonInstance.CreateClient();
 
-            // GO TO MAIN MENU
+            if (isAuthenticated)
+            {
+                clientSingletonInstance.ClientGameManager.GoToMainMenu();
+            }
         }
     }
 }
