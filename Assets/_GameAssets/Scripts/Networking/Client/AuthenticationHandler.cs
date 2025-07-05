@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
-using System.Reflection;
 using Unity.Services.Authentication;
+using Unity.Services.Core;
+using UnityEngine;
 
 public static class AuthenticationHandler
 {
@@ -14,24 +15,66 @@ public static class AuthenticationHandler
             return AuthenticationState;
         }
 
+        if(AuthenticationState == AuthenticationState.Authenticating)
+        {
+            Debug.LogWarning("Already Authenticating!");
+            await Authenticating();
+            return AuthenticationState;
+        }
+
+        await SignInAnonymouslyAsync(maxTries);
+
+        return AuthenticationState;
+    }
+
+    private static async UniTask<AuthenticationState> Authenticating()
+    {
+        while(AuthenticationState == AuthenticationState.Authenticating 
+            || AuthenticationState == AuthenticationState.NotAuthenticated)
+        {
+            await UniTask.Delay(200);
+        }
+
+        return AuthenticationState;
+    }
+
+    private static async UniTask SignInAnonymouslyAsync(int maxTries)
+    {
         AuthenticationState = AuthenticationState.Authenticating;
 
         int tries = 0;
 
-        while(AuthenticationState == AuthenticationState.Authenticating && tries < maxTries)
+        while (AuthenticationState == AuthenticationState.Authenticating && tries < maxTries)
         {
-            await AuthenticationService.Instance.SignInAnonymouslyAsync();
-
-            if(AuthenticationService.Instance.IsSignedIn && AuthenticationService.Instance.IsAuthorized)
+            try
             {
-                AuthenticationState = AuthenticationState.Authenticated;
-                break;
+                await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
+                if (AuthenticationService.Instance.IsSignedIn && AuthenticationService.Instance.IsAuthorized)
+                {
+                    AuthenticationState = AuthenticationState.Authenticated;
+                    break;
+                }
+            }
+            catch (AuthenticationException authenticationException)
+            {
+                Debug.LogError(authenticationException);
+                AuthenticationState = AuthenticationState.Error;
+            }
+            catch(RequestFailedException requestFailedException)
+            {
+                Debug.LogError(requestFailedException);
+                AuthenticationState = AuthenticationState.Error;
             }
 
             tries++;
             await UniTask.Delay(1000);
         }
 
-        return AuthenticationState;
+        if(AuthenticationState != AuthenticationState.Authenticated)
+        {
+            Debug.LogWarning($"Player was not signed in succesfully after {tries} tries.");
+            AuthenticationState = AuthenticationState.TimeOut;
+        }
     }
 }
