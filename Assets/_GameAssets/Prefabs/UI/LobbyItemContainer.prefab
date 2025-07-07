@@ -402,6 +402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1831003621678440801}
   - component: {fileID: 8993448947908393796}
+  - component: {fileID: 8294115510445524014}
   - component: {fileID: 7226065553496490580}
   m_Layer: 5
   m_Name: LobbyItemContainer
@@ -440,6 +441,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8874476011758302290}
   m_CullTransparentMesh: 1
+--- !u!114 &8294115510445524014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8874476011758302290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c0a74c76783c14b84b6e7dfeef2273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lobbyNameText: {fileID: 8394794633716667979}
+  _lobbyPlayersText: {fileID: 1706894825420082432}
+  _joinButton: {fileID: 3017500012462846528}
 --- !u!114 &7226065553496490580
 MonoBehaviour:
   m_ObjectHideFlags: 0

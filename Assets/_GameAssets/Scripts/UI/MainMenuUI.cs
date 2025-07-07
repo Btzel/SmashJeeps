@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MainMenuUI : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private LobbiesListUI _lobbiesListUI;
     [SerializeField] private Button _hostButton;
     [SerializeField] private Button _clientButton;
     [SerializeField] private TMP_InputField _joinCodeInputField;
@@ -37,6 +38,8 @@ public class MainMenuUI : MonoBehaviour
     {
         _lobbiesParentObject.SetActive(true);
         _lobbiesBackgroundTransform.DOAnchorPosX(-650f, _animationDuration).SetEase(Ease.OutBack);
+
+        _lobbiesListUI.RefreshList();
     }
     private void CloseLobbies()
     {
