@@ -831,6 +831,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e80ce262d0833a4e8350778cf5da8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hostButton: {fileID: 1867223510}
+  _clientButton: {fileID: 1460913601}
+  _joinCodeInputField: {fileID: 1289038004}
 --- !u!1 &1289038002
 GameObject:
   m_ObjectHideFlags: 0

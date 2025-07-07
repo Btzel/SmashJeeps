@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ef5b236d0b5d9409dc4a60e4981582, type: 3}
   m_Name: Game Data
   m_EditorClassIdentifier: 
-  _gameTimer: 5
+  _gameTimer: 300
