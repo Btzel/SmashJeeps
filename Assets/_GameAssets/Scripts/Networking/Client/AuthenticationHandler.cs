@@ -49,7 +49,7 @@ public static class AuthenticationHandler
             try
             {
                 await AuthenticationService.Instance.SignInAnonymouslyAsync();
-
+                Debug.Log("Signed in anonymously as: " + AuthenticationService.Instance.PlayerId);
                 if (AuthenticationService.Instance.IsSignedIn && AuthenticationService.Instance.IsAuthorized)
                 {
                     AuthenticationState = AuthenticationState.Authenticated;
