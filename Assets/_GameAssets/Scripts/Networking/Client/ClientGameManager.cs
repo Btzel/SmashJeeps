@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System;
+using System.Text;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Services.Core;
@@ -44,6 +45,18 @@ public class ClientGameManager
 
         UnityTransport transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
         transport.SetRelayServerData(AllocationUtils.ToRelayServerData(_joinAllocation, "dtls"));
+
+
+        UserData userData = new UserData
+        {
+            UserName = PlayerPrefs.GetString(Consts.PlayerData.PLAYER_NAME,"Noname")
+        };
+
+        string payload = JsonUtility.ToJson(userData);
+        byte[] payloadBytes = Encoding.UTF8.GetBytes(payload);
+        NetworkManager.Singleton.NetworkConfig.ConnectionData = payloadBytes;
+
+
         NetworkManager.Singleton.StartClient();
     }
 }

@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Services.Lobbies;
@@ -13,6 +14,7 @@ using UnityEngine;
 public class HostGameManager
 {
     private const int MAX_CONNECTIONS = 4;
+    public NetworkServer NetworkServer { get; private set; }
 
     private Allocation _allocation;
     private string _joinCode;
@@ -59,8 +61,10 @@ public class HostGameManager
                 }
             };
 
+            string playerName = PlayerPrefs.GetString(Consts.PlayerData.PLAYER_NAME, "Noname");
+
             Lobby lobby = await LobbyService.Instance.CreateLobbyAsync
-                ("Burak Lobby", MAX_CONNECTIONS,createLobbyOptions);
+                ($"{playerName}'s Lobby", MAX_CONNECTIONS,createLobbyOptions);
 
             _lobbyId = lobby.Id;
 
@@ -71,6 +75,17 @@ public class HostGameManager
             Debug.LogError(lobbyServiceException);
             return;
         }
+
+        NetworkServer = new NetworkServer(NetworkManager.Singleton);
+
+        UserData userData = new UserData
+        {
+            UserName = PlayerPrefs.GetString(Consts.PlayerData.PLAYER_NAME, "Noname")
+        };
+
+        string payload = JsonUtility.ToJson(userData);
+        byte[] payloadBytes = Encoding.UTF8.GetBytes(payload);
+        NetworkManager.Singleton.NetworkConfig.ConnectionData = payloadBytes;
 
 
 
