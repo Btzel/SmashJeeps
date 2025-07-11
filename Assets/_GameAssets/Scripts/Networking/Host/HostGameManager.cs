@@ -94,7 +94,7 @@ public class HostGameManager : IDisposable
 
         NetworkManager.Singleton.StartHost();
 
-        NetworkManager.Singleton.SceneManager.LoadScene(Consts.SceneNames.GAME_SCENE,
+        NetworkManager.Singleton.SceneManager.LoadScene(Consts.SceneNames.CHARACTER_SELECT_SCENE,
             UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 
