@@ -4,7 +4,7 @@ using Unity.Netcode;
 using Unity.Networking.Transport.Error;
 using UnityEngine.SceneManagement;
 
-public class NetworkClient
+public class NetworkClient : IDisposable
 {
     private NetworkManager _networkManager;
 
@@ -18,7 +18,7 @@ public class NetworkClient
     private void OnClientDisconnectCallback(ulong clientId)
     {
         if (clientId != 0 && clientId != _networkManager.LocalClientId) return;
-        
+
         Disconnect();
     }
 
@@ -30,6 +30,18 @@ public class NetworkClient
         }
 
         if (_networkManager.IsConnectedClient)
+        {
+            _networkManager.Shutdown();
+        }
+    }
+
+    public void Dispose()
+    {
+        if (_networkManager == null) return;
+
+        _networkManager.OnClientDisconnectCallback -= OnClientDisconnectCallback;
+
+        if (_networkManager.IsListening)
         {
             _networkManager.Shutdown();
         }

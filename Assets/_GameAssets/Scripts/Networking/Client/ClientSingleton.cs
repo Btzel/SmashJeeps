@@ -5,16 +5,16 @@ public class ClientSingleton : MonoBehaviour
 {
     private static ClientSingleton instance;
 
-    public ClientGameManager ClientGameManager {  get; private set; }
+    public ClientGameManager ClientGameManager { get; private set; }
 
     public static ClientSingleton Instance
     {
         get
         {
-            if(instance != null) return instance;
+            if (instance != null) return instance;
 
             instance = FindAnyObjectByType<ClientSingleton>();
-            if(instance == null)
+            if (instance == null)
             {
                 Debug.LogError("No ClientSingleton in the scene!");
                 return null;
@@ -34,5 +34,10 @@ public class ClientSingleton : MonoBehaviour
     {
         ClientGameManager = new ClientGameManager();
         return await ClientGameManager.InitAsync();
+    }
+
+    private void OnDestroy()
+    {
+        ClientGameManager?.Dispose();
     }
 }

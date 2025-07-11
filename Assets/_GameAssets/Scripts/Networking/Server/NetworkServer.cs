@@ -4,7 +4,7 @@ using Unity.Netcode;
 using Unity.VisualScripting.InputSystem;
 using UnityEngine;
 
-public class NetworkServer
+public class NetworkServer : IDisposable
 {
     private NetworkManager _networkManager;
     private Dictionary<ulong,string> _clientIdToAuthDictionary = new Dictionary<ulong, string>();
@@ -44,6 +44,20 @@ public class NetworkServer
         response.Approved = true;
         response.CreatePlayerObject = true;
 
+    }
+
+    public void Dispose()
+    {
+        if (_networkManager == null) return;
+
+        _networkManager.ConnectionApprovalCallback -= ApprovalCheck;
+        _networkManager.OnServerStarted -= OnServerReady;
+        _networkManager.OnClientDisconnectCallback -= OnClientDisconnectCallback;
+
+        if(_networkManager.IsListening)
+        {
+            _networkManager.Shutdown();
+        }
     }
 }
 
