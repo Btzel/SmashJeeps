@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CharacterSelectReady : NetworkBehaviour
 {
+    public static CharacterSelectReady Instance { get; private set; }
     public event Action OnReadyChanged;
     public event Action OnUnreadyChanged;
     public event Action OnAllPlayersReady;
@@ -13,6 +14,7 @@ public class CharacterSelectReady : NetworkBehaviour
 
     void Awake()
     {
+        Instance = this;
         _playerReadyDictionary = new Dictionary<ulong, bool>();
 
     }
