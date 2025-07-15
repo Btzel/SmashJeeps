@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 992258524
+  GlobalObjectIdHash: 3994053063
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 8
@@ -572,9 +572,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
+  _playerIndex: 0
   _playerNameText: {fileID: 5562642322168017360}
   _readyGameObject: {fileID: 4191959218527015004}
   _kickButton: {fileID: 8233725820028862562}
+  _characterSelectVisual: {fileID: 7783163819461872898}
 --- !u!1001 &109829887912875966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -641,3 +643,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4151077527024150877, guid: d98aa5932fe409d40beb435423615c50, type: 3}
   m_PrefabInstance: {fileID: 109829887912875966}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7783163819461872898 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7891832612408662716, guid: d98aa5932fe409d40beb435423615c50, type: 3}
+  m_PrefabInstance: {fileID: 109829887912875966}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7afe9643618d24fb05d9ef3ab29a1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

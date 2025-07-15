@@ -13,6 +13,7 @@ public class CharacterSelectPlayer : NetworkBehaviour
     [SerializeField] private TMP_Text _playerNameText;
     [SerializeField] private GameObject _readyGameObject;
     [SerializeField] private Button _kickButton;
+    [SerializeField] private CharacterSelectVisual _characterSelectVisual;
 
     void Start()
     {
@@ -44,6 +45,7 @@ public class CharacterSelectPlayer : NetworkBehaviour
             PlayerDataSerializable playerData =
                 MultiplayerGameManager.Instance.GetPlayerDataFromPlayerIndex(_playerIndex);
 
+            _characterSelectVisual.SetPlayerColor(MultiplayerGameManager.Instance.GetPlayerColor(playerData.ColorId));
 
             _readyGameObject.SetActive(CharacterSelectReady.Instance.IsPlayerReady(playerData.ClientId));
             HideKickButton(playerData);
