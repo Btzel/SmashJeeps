@@ -109,6 +109,11 @@ public class HostGameManager : IDisposable
         }
     }
 
+    public string GetJoinCode()
+    {
+        return _joinCode;
+    }
+
     public async void ShutDown()
     {
         HostSingleton.Instance.StopCoroutine(nameof(HeartbeatLobby));

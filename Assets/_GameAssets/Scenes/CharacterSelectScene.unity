@@ -1101,8 +1101,11 @@ MonoBehaviour:
   _startButton: {fileID: 1584951415}
   _copyButton: {fileID: 884193956}
   _readyText: {fileID: 1139733888}
+  _joinCodeText: {fileID: 1348245908}
+  _copiedImage: {fileID: 2046436062}
   _greenButtonSprite: {fileID: -1428609198, guid: 3f382c7e313b8d445aa2a67ad287df26, type: 3}
   _redButtonSprite: {fileID: -1357662861, guid: 435c301b9f8e3f34c9a65f42764b15f9, type: 3}
+  _tickSprite: {fileID: 21300000, guid: 428a23dc33af54c669b1a744aee311fc, type: 3}
 --- !u!1 &504286183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,7 +1414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

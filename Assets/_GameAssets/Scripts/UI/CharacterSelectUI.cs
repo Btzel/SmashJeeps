@@ -13,9 +13,12 @@ public class CharacterSelectUI : MonoBehaviour
     [SerializeField] private Button _startButton;
     [SerializeField] private Button _copyButton;
     [SerializeField] private TMP_Text _readyText;
+    [SerializeField] private TMP_Text _joinCodeText;
+    [SerializeField] private Image _copiedImage;
 
     [SerializeField] private Sprite _greenButtonSprite;
     [SerializeField] private Sprite _redButtonSprite;
+    [SerializeField] private Sprite _tickSprite;
 
     private bool _isPlayerReady;
 
@@ -24,16 +27,32 @@ public class CharacterSelectUI : MonoBehaviour
         _mainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
         _readyButton.onClick.AddListener(OnReadyButtonClicked);
         _startButton.onClick.AddListener(OnStartButtonClicked);
+        _copyButton.onClick.AddListener(OnCopyButtonClicked);
 
     }
+
+
 
     private void Start()
     {
         _startButton.gameObject.SetActive(NetworkManager.Singleton.IsServer);
+        SetStartButtonInteractable(false);
 
         CharacterSelectReady.Instance.OnAllPlayersReady += CharacterSelectReady_OnAllPlayersReady;
         CharacterSelectReady.Instance.OnUnreadyChanged += CharacterSelectPlayer_OnUnreadyChanged;
         MultiplayerGameManager.Instance.OnPlayerDataNetworkListChanged += MultiplayerGameManager_OnPlayerDataNetworkListChanged;
+    }
+
+    private void OnEnable()
+    {
+        if (NetworkManager.Singleton.IsHost)
+        {
+            _joinCodeText.text = HostSingleton.Instance.HostGameManager.GetJoinCode();
+        }
+        else if (NetworkManager.Singleton.IsClient)
+        {
+            _joinCodeText.text = ClientSingleton.Instance.ClientGameManager.GetJoinCode();
+        }
     }
 
     private void CharacterSelectReady_OnAllPlayersReady()
@@ -70,6 +89,12 @@ public class CharacterSelectUI : MonoBehaviour
         }
     }
 
+    private void OnCopyButtonClicked()
+    {
+        _copiedImage.sprite = _tickSprite;
+        GUIUtility.systemCopyBuffer = _joinCodeText.text;
+    }
+
     private void OnMainMenuButtonClicked()
     {
         if (NetworkManager.Singleton.IsHost)
@@ -100,5 +125,11 @@ public class CharacterSelectUI : MonoBehaviour
         {
             _startButton.interactable = isActive;
         }
+    }
+    
+    private void OnDestroy() {
+        CharacterSelectReady.Instance.OnAllPlayersReady -= CharacterSelectReady_OnAllPlayersReady;
+        CharacterSelectReady.Instance.OnUnreadyChanged -= CharacterSelectPlayer_OnUnreadyChanged;
+        MultiplayerGameManager.Instance.OnPlayerDataNetworkListChanged -= MultiplayerGameManager_OnPlayerDataNetworkListChanged;   
     }
 }

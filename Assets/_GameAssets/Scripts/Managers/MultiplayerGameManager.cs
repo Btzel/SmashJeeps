@@ -158,4 +158,16 @@ public class MultiplayerGameManager : NetworkBehaviour
     {
         return GetPlayerDataFromClientId(NetworkManager.Singleton.LocalClientId);
     }
+
+    public void KickPlayer(ulong clientId)
+    {
+        NetworkManager.Singleton.DisconnectClient(clientId);
+        OnClientDisconnectCallback(clientId);
+    }
+
+    public override void OnNetworkDespawn()
+    {
+        NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnectedCallback;
+        NetworkManager.Singleton.OnClientDisconnectCallback -= OnClientDisconnectCallback;
+    }
 }

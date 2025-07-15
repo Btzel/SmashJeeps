@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Unity.Collections;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -15,7 +16,16 @@ public class CharacterSelectPlayer : NetworkBehaviour
     [SerializeField] private Button _kickButton;
     [SerializeField] private CharacterSelectVisual _characterSelectVisual;
 
-    void Start()
+    public NetworkVariable<FixedString32Bytes> PlayerName = new NetworkVariable<FixedString32Bytes>();
+
+    private void Awake()
+    {
+        _kickButton.onClick.AddListener(OnKickButtonClicked);
+    }
+
+
+
+    private void Start()
     {
         MultiplayerGameManager.Instance.OnPlayerDataNetworkListChanged +=
             MultiplayerGameManager_OnPlayerDataNetworkListChanged;
@@ -24,6 +34,14 @@ public class CharacterSelectPlayer : NetworkBehaviour
 
 
         UpdatePlayer();
+
+        OnPlayerNameChanged(string.Empty, PlayerName.Value);
+        PlayerName.OnValueChanged += OnPlayerNameChanged;
+    }
+
+    private void OnPlayerNameChanged(FixedString32Bytes oldName, FixedString32Bytes newName)
+    {
+        _playerNameText.text = newName.ToString();
     }
 
     private void CharacterSelectReady_OnReadyChanged()
@@ -49,6 +67,9 @@ public class CharacterSelectPlayer : NetworkBehaviour
 
             _readyGameObject.SetActive(CharacterSelectReady.Instance.IsPlayerReady(playerData.ClientId));
             HideKickButton(playerData);
+
+            SetOwner(playerData.ClientId);
+            UpdatePlayerNameRpc();
         }
         else
         {
@@ -58,8 +79,47 @@ public class CharacterSelectPlayer : NetworkBehaviour
 
     private void HideKickButton(PlayerDataSerializable playerData)
     {
-        _kickButton.gameObject.SetActive(NetworkManager.Singleton.IsServer && 
+        _kickButton.gameObject.SetActive(NetworkManager.Singleton.IsServer &&
             playerData.ClientId != NetworkManager.Singleton.LocalClientId);
     }
 
+
+    private void OnKickButtonClicked()
+    {
+        PlayerDataSerializable playerData = MultiplayerGameManager.Instance.GetPlayerDataFromPlayerIndex(_playerIndex);
+        MultiplayerGameManager.Instance.KickPlayer(playerData.ClientId);
+    }
+
+    private void SetOwner(ulong clientId)
+    {
+        if (IsServer)
+        {
+            var networkObject = GetComponent<NetworkObject>();
+            if (networkObject.OwnerClientId != clientId)
+            {
+                networkObject.ChangeOwnership(clientId);
+            }
+        }
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    private void UpdatePlayerNameRpc()
+    {
+        if (IsServer)
+        {
+            UserData userData = HostSingleton.Instance.HostGameManager.NetworkServer.GetUserDataByClientId(
+                OwnerClientId
+            );
+            PlayerName.Value = userData.UserName;
+        }
+    }
+
+    public override void OnDestroy()
+    {
+        MultiplayerGameManager.Instance.OnPlayerDataNetworkListChanged -=
+            MultiplayerGameManager_OnPlayerDataNetworkListChanged;
+
+        CharacterSelectReady.Instance.OnReadyChanged -= CharacterSelectReady_OnReadyChanged;
+        PlayerName.OnValueChanged -= OnPlayerNameChanged;
+    }
 }
