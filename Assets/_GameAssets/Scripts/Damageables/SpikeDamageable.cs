@@ -1,7 +1,7 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class SpikeDamageable : NetworkBehaviour,IDamageable
+public class SpikeDamageable : NetworkBehaviour, IDamageable
 {
     [SerializeField] private MysteryBoxSkillsSO _mysteryBoxSkill;
 
@@ -57,5 +57,11 @@ public class SpikeDamageable : NetworkBehaviour,IDamageable
     public int GetRespawnTimer()
     {
         return _mysteryBoxSkill.SkillData.RespawnTimer;
+    }
+
+    
+    public int GetDamageAmount()
+    {
+        return _mysteryBoxSkill.SkillData.DamageAmount;
     }
 }
