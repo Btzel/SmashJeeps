@@ -9,6 +9,7 @@ public class PlayerNetworkController : NetworkBehaviour
     [Header("References")]
     [SerializeField] private CinemachineCamera _playerCamera;
     [SerializeField] private TMP_Text _playerNameText;
+    
 
     private PlayerVehicleController _playerVehicleController;
     private PlayerSkillController _playerSkillController;
