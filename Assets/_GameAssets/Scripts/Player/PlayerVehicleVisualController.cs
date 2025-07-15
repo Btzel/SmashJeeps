@@ -13,6 +13,8 @@ public class PlayerVehicleVisualController : NetworkBehaviour
     [SerializeField] private float _wheelSpinSpeed, _wheelYWhenSpringMin, _wheelYWhenSpringMax;
     [SerializeField] private Transform _jeepVisualTransform;
     [SerializeField] private Collider _playerCollider;
+
+    [SerializeField] private CharacterSelectVisual _characterSelectVisual;
      
     private Quaternion _wheelFrontLeftRoll;
     private Quaternion _wheelFrontRightRoll;
@@ -56,6 +58,9 @@ public class PlayerVehicleVisualController : NetworkBehaviour
 
         _springRestLength = _playerVehicleController.Settings.SpringRestLength;
         _steerAngle = _playerVehicleController.Settings.SteerAngle;
+
+        PlayerDataSerializable playerData = MultiplayerGameManager.Instance.GetPlayerDataFromClientId(OwnerClientId);
+        _characterSelectVisual.SetPlayerColor(MultiplayerGameManager.Instance.GetPlayerColor(playerData.ColorId));
     }
     private void Update()
     {

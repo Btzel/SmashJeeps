@@ -342,6 +342,7 @@ MonoBehaviour:
   _wheelYWhenSpringMax: 0.3
   _jeepVisualTransform: {fileID: 230291056093103812}
   _playerCollider: {fileID: 6039428557711602615}
+  _characterSelectVisual: {fileID: 6281629262625027365}
 --- !u!135 &4927354170425466638
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -493,6 +494,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7542220421902002042, guid: d98aa5932fe409d40beb435423615c50, type: 3}
   m_PrefabInstance: {fileID: 4227120258789453721}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6281629262625027365 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7891832612408662716, guid: d98aa5932fe409d40beb435423615c50, type: 3}
+  m_PrefabInstance: {fileID: 4227120258789453721}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7afe9643618d24fb05d9ef3ab29a1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8505889105072787162 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5522330589085704515, guid: d98aa5932fe409d40beb435423615c50, type: 3}

@@ -24,19 +24,30 @@ public class SpawnManager : NetworkBehaviour
     }
     public override void OnNetworkSpawn()
     {
-        if(!IsServer) return;
+        if (!IsServer) return;
 
-        for(int i = 0; i < _spawnPointTransformList.Count; i++)
+        for (int i = 0; i < _spawnPointTransformList.Count; i++)
         {
             _availableSpawnIndexList.Add(i);
         }
 
-        for(int i = 0; i < _respawnPointTransformList.Count; i++)
+        for (int i = 0; i < _respawnPointTransformList.Count; i++)
         {
             _availableRespawnIndexList.Add(i);
         }
 
-        NetworkManager.OnClientConnectedCallback += SpawnPlayer;
+        SpawnAllPlayers();
+
+    }
+
+    private void SpawnAllPlayers()
+    {
+        if (!IsServer) return;
+
+        foreach (var client in NetworkManager.Singleton.ConnectedClientsList)
+        {
+            SpawnPlayer(client.ClientId);
+        }
     }
 
     private void SpawnPlayer(ulong clientId)
@@ -50,11 +61,11 @@ public class SpawnManager : NetworkBehaviour
 
         Transform spawnPointTransform = _spawnPointTransformList[spawnIndex];
 
-        GameObject playerInstance = Instantiate(_playerPrefab, 
+        GameObject playerInstance = Instantiate(_playerPrefab,
             spawnPointTransform.position, spawnPointTransform.rotation);
 
         playerInstance.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId);
-        Debug.Log("Player Spawned with id: "+ clientId);
+        Debug.Log("Player Spawned with id: " + clientId);
     }
 
     public void RespawnPlayer(int respawnTimer,ulong clientId)
