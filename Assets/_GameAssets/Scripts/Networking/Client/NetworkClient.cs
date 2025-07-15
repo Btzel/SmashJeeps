@@ -22,7 +22,7 @@ public class NetworkClient : IDisposable
         Disconnect();
     }
 
-    private void Disconnect()
+    public void Disconnect()
     {
         if (SceneManager.GetActiveScene().name != Consts.SceneNames.MENU_SCENE)
         {

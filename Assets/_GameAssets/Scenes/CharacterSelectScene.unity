@@ -1039,6 +1039,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 490901511}
+  - component: {fileID: 490901512}
   m_Layer: 5
   m_Name: CharacterSelectUI
   m_TagString: Untagged
@@ -1071,6 +1072,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &490901512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490901510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712829ae0d4e9d846802bda8be5373cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainMenuButton: {fileID: 538998676}
+  _readyButton: {fileID: 1866095790}
+  _startButton: {fileID: 1584951415}
+  _copyButton: {fileID: 884193956}
+  _readyText: {fileID: 1139733888}
+  _greenButtonSprite: {fileID: -1428609198, guid: 3f382c7e313b8d445aa2a67ad287df26, type: 3}
+  _redButtonSprite: {fileID: -1357662861, guid: 435c301b9f8e3f34c9a65f42764b15f9, type: 3}
 --- !u!1 &504286183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,6 +1495,14 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 770951783
       objectReference: {fileID: 0}
+    - target: {fileID: 8196590365632823637, guid: 0fd2686af94f5cb4b812dc2e06d0e110, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196590365632823637, guid: 0fd2686af94f5cb4b812dc2e06d0e110, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 992258524
+      objectReference: {fileID: 0}
     - target: {fileID: 8216755652741480965, guid: 0fd2686af94f5cb4b812dc2e06d0e110, type: 3}
       propertyPath: m_Name
       value: CharacterSelectPlayer
@@ -1572,7 +1600,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -1846,6 +1874,14 @@ PrefabInstance:
     - target: {fileID: 8196590365632823637, guid: 0fd2686af94f5cb4b812dc2e06d0e110, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 4116389699
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196590365632823637, guid: 0fd2686af94f5cb4b812dc2e06d0e110, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196590365632823637, guid: 0fd2686af94f5cb4b812dc2e06d0e110, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 992258524
       objectReference: {fileID: 0}
     - target: {fileID: 8216755652741480965, guid: 0fd2686af94f5cb4b812dc2e06d0e110, type: 3}
       propertyPath: m_Name
@@ -2214,6 +2250,14 @@ PrefabInstance:
     - target: {fileID: 8196590365632823637, guid: 0fd2686af94f5cb4b812dc2e06d0e110, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1092088885
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196590365632823637, guid: 0fd2686af94f5cb4b812dc2e06d0e110, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196590365632823637, guid: 0fd2686af94f5cb4b812dc2e06d0e110, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 992258524
       objectReference: {fileID: 0}
     - target: {fileID: 8216755652741480965, guid: 0fd2686af94f5cb4b812dc2e06d0e110, type: 3}
       propertyPath: m_Name
@@ -3836,6 +3880,14 @@ PrefabInstance:
     - target: {fileID: 8196590365632823637, guid: 0fd2686af94f5cb4b812dc2e06d0e110, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3994053063
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196590365632823637, guid: 0fd2686af94f5cb4b812dc2e06d0e110, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196590365632823637, guid: 0fd2686af94f5cb4b812dc2e06d0e110, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 992258524
       objectReference: {fileID: 0}
     - target: {fileID: 8216755652741480965, guid: 0fd2686af94f5cb4b812dc2e06d0e110, type: 3}
       propertyPath: m_Name

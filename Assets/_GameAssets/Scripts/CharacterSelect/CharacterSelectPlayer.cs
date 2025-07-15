@@ -46,11 +46,18 @@ public class CharacterSelectPlayer : NetworkBehaviour
 
 
             _readyGameObject.SetActive(CharacterSelectReady.Instance.IsPlayerReady(playerData.ClientId));
+            HideKickButton(playerData);
         }
         else
         {
             gameObject.SetActive(false);
         }
+    }
+
+    private void HideKickButton(PlayerDataSerializable playerData)
+    {
+        _kickButton.gameObject.SetActive(NetworkManager.Singleton.IsServer && 
+            playerData.ClientId != NetworkManager.Singleton.LocalClientId);
     }
 
 }
