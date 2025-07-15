@@ -18,6 +18,7 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private Button _closeButton;
     [SerializeField] private Button _refreshButton;
     [SerializeField] private RectTransform _lobbiesBackgroundTransform;
+    [SerializeField] private TMP_Text _welcomeText;
 
     [Header("Settings")]
     [SerializeField] private float _animationDuration;
@@ -33,6 +34,12 @@ public class MainMenuUI : MonoBehaviour
     private void Start()
     {
         _lobbiesParentObject.SetActive(false);
+    }
+
+    void OnEnable()
+    {
+        var PlayerName = PlayerPrefs.GetString(Consts.PlayerData.PLAYER_NAME, string.Empty);
+        _welcomeText.text = $"welcome, <color=yellow>{PlayerName}</color>";
     }
     private void OpenLobbies()
     {

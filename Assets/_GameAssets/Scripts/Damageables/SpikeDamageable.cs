@@ -33,10 +33,10 @@ public class SpikeDamageable : NetworkBehaviour, IDamageable
             playerVehicleController.OnVehicleCrashed -= PlayerVehicleController_OnVehicleCrashed;
         }
     }
-    public void Damage(PlayerVehicleController playerVehicleController)
+    public void Damage(PlayerVehicleController playerVehicleController,string playerName)
     {
         playerVehicleController.CrashVehicle();
-        KillScreenUI.Instance.SetSmashedUI("ALPER", _mysteryBoxSkill.SkillData.RespawnTimer);
+        KillScreenUI.Instance.SetSmashedUI(playerName, _mysteryBoxSkill.SkillData.RespawnTimer);
 
 
     }
@@ -59,9 +59,21 @@ public class SpikeDamageable : NetworkBehaviour, IDamageable
         return _mysteryBoxSkill.SkillData.RespawnTimer;
     }
 
-    
+
     public int GetDamageAmount()
     {
         return _mysteryBoxSkill.SkillData.DamageAmount;
+    }
+    
+    public string GetKillerName()
+    {
+        ulong killerClientId = GetKillerClientId();
+        if (NetworkManager.Singleton.ConnectedClients.TryGetValue(killerClientId, out var killetClient))
+        {
+            string playerName = killetClient.PlayerObject.GetComponent<PlayerNetworkController>().PlayerName.Value.ToString();
+            return playerName;
+        }
+
+        return string.Empty;
     }
 }

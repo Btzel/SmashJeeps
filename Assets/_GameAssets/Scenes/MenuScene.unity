@@ -1003,6 +1003,7 @@ MonoBehaviour:
   _closeButton: {fileID: 1324734288}
   _refreshButton: {fileID: 1199106923}
   _lobbiesBackgroundTransform: {fileID: 1501329360}
+  _welcomeText: {fileID: 2097683700}
   _animationDuration: 0.5
 --- !u!1 &1186178348
 GameObject:
