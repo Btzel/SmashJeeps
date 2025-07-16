@@ -9,6 +9,8 @@ public class LeaderBoardUI : NetworkBehaviour
     [SerializeField] private Transform _rankingPrefab;
     private NetworkList<LeaderboardEntitiesSerializable> _leaderboardEntityList;
 
+
+    
     void Awake()
     {
         _leaderboardEntityList = new NetworkList<LeaderboardEntitiesSerializable>();
@@ -16,9 +18,24 @@ public class LeaderBoardUI : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
+
         if (IsClient)
         {
             _leaderboardEntityList.OnListChanged += HandleLeaderboardEntitiesChanged;
+        }
+
+        if (IsClient && !IsServer)
+        {
+            foreach (var entity in _leaderboardEntityList)
+            {
+                LeaderboardRanking leaderboardRankingInstance
+                    = Instantiate(_leaderboardRankingPrefab, _rankingPrefab);
+                leaderboardRankingInstance.SetData(
+                    entity.ClientId,
+                    entity.PlayerName,
+                    entity.Score
+                );
+            }
         }
 
         if (IsServer)
@@ -29,7 +46,6 @@ public class LeaderBoardUI : NetworkBehaviour
                 HandlePlayerSpawned(player);
             }
 
-
             PlayerNetworkController.OnPlayerSpawned += HandlePlayerSpawned;
             PlayerNetworkController.OnPlayerDespawned += HandlePlayerDespawned;
         }
@@ -37,10 +53,18 @@ public class LeaderBoardUI : NetworkBehaviour
 
     private void HandleLeaderboardEntitiesChanged(NetworkListEvent<LeaderboardEntitiesSerializable> changeEvent)
     {
+        
+
         switch (changeEvent.Type)
         {
             case NetworkListEvent<LeaderboardEntitiesSerializable>.EventType.Add:
-                Instantiate(_leaderboardRankingPrefab, _rankingPrefab);
+                LeaderboardRanking leaderboardRankingInstance
+                    = Instantiate(_leaderboardRankingPrefab, _rankingPrefab);
+                leaderboardRankingInstance.SetData(
+                    changeEvent.Value.ClientId,
+                    changeEvent.Value.PlayerName,
+                    changeEvent.Value.Score
+                );
                 break;
         }
     }
@@ -51,8 +75,11 @@ public class LeaderBoardUI : NetworkBehaviour
         {
             ClientId = playerNetworkController.OwnerClientId,
             PlayerName = playerNetworkController.PlayerName.Value,
-            Score = 0
+            Score = 0,
+
         });
+        
+        
     }
 
     private void HandlePlayerDespawned(PlayerNetworkController playerNetworkController)
@@ -64,7 +91,10 @@ public class LeaderBoardUI : NetworkBehaviour
             if (entity.ClientId != playerNetworkController.OwnerClientId) continue;
 
             _leaderboardEntityList.Remove(entity);
+            
             break;
         }
+
+        
     }
 }

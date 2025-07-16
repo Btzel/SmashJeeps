@@ -51,6 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315d31727739619408b45c5418cd8351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rankText: {fileID: 1441201901001271561}
+  _nameText: {fileID: 1432864435209634873}
+  _scoreText: {fileID: 6102931515395058880}
+  _ownerColor: {r: 1, g: 0.9607843, b: 0, a: 1}
 --- !u!1 &1741842823276934091
 GameObject:
   m_ObjectHideFlags: 0

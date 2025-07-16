@@ -32,7 +32,7 @@ public class PlayerNetworkController : NetworkBehaviour
             SetPlayerNameRpc();
 
             OnPlayerSpawned?.Invoke(this);
-
+            Debug.Log("WorksPNC");
         }
 
         if (!IsOwner) return;
