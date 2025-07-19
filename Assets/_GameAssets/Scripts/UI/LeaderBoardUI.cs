@@ -25,22 +25,16 @@ public class LeaderBoardUI : NetworkBehaviour
         if (IsClient)
         {
             _leaderboardEntityList.OnListChanged += HandleLeaderboardEntitiesChanged;
-        }
-
-        if (IsClient && !IsServer)
-        {
-            foreach (var entity in _leaderboardEntityList)
+            foreach (LeaderboardEntitiesSerializable entity in _leaderboardEntityList)
             {
-                LeaderboardRanking leaderboardRankingInstance
-                    = Instantiate(_leaderboardRankingPrefab, _rankingPrefab);
-                leaderboardRankingInstance.SetData(
-                    entity.ClientId,
-                    entity.PlayerName,
-                    entity.Score
-                );
-                _leaderboardRankingList.Add(leaderboardRankingInstance);
+                HandleLeaderboardEntitiesChanged(new NetworkListEvent<LeaderboardEntitiesSerializable>
+                {
+                    Type = NetworkListEvent<LeaderboardEntitiesSerializable>.EventType.Add,
+                    Value = entity
+                });
             }
         }
+
 
         if (IsServer)
         {
@@ -60,6 +54,7 @@ public class LeaderBoardUI : NetworkBehaviour
         switch (changeEvent.Type)
         {
             case NetworkListEvent<LeaderboardEntitiesSerializable>.EventType.Add:
+                if(_leaderboardRankingList.Any(x => x.ClientId == changeEvent.Value.ClientId)) return;
                 LeaderboardRanking leaderboardRankingInstance
                     = Instantiate(_leaderboardRankingPrefab, _rankingPrefab);
                 leaderboardRankingInstance.SetData(
@@ -69,19 +64,43 @@ public class LeaderBoardUI : NetworkBehaviour
                 );
                 _leaderboardRankingList.Add(leaderboardRankingInstance);
                 break;
+            case NetworkListEvent<LeaderboardEntitiesSerializable>.EventType.Remove:
+                LeaderboardRanking leaderboardRankingToRemove
+                    = _leaderboardRankingList.FirstOrDefault(
+                        x => x.ClientId == changeEvent.Value.ClientId
+                    );
+                if (leaderboardRankingToRemove != null)
+                {
+                    leaderboardRankingToRemove.transform.SetParent(null);
+                    Destroy(leaderboardRankingToRemove.gameObject);
+                    _leaderboardRankingList.Remove(leaderboardRankingToRemove);
+                }
+                break;
             case NetworkListEvent<LeaderboardEntitiesSerializable>.EventType.Value:
                 LeaderboardRanking leaderboardRankingToUpdate
                     = _leaderboardRankingList.FirstOrDefault(
                         x => x.ClientId == changeEvent.Value.ClientId
                     );
-                
-
                 if (leaderboardRankingToUpdate != null)
                 {
                     leaderboardRankingToUpdate.UpdateScore(changeEvent.Value.Score);
                 }
                 break;
         }
+
+        UpdateSortingOrder();
+    }
+
+    private void UpdateSortingOrder()
+    {
+        _leaderboardRankingList.Sort((x, y) => y.Score.CompareTo(x.Score));
+
+        for (int i = 0; i < _leaderboardRankingList.Count; i++)
+        {
+            _leaderboardRankingList[i].transform.SetSiblingIndex(i);
+            _leaderboardRankingList[i].UpdateOrder();
+        }
+        
     }
 
     private void HandlePlayerSpawned(PlayerNetworkController playerNetworkController)
@@ -99,7 +118,7 @@ public class LeaderBoardUI : NetworkBehaviour
                 playerNetworkController.OwnerClientId,
                 newScore
             );
-        
+
     }
 
     private void HandleScoreChanged(ulong clientId, int newScore)

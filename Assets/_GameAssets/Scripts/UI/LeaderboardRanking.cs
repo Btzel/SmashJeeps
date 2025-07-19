@@ -28,6 +28,7 @@ public class LeaderboardRanking : MonoBehaviour
         }
 
         UpdateScore(score);
+        UpdateOrder();
     }
 
     public void UpdateScore(int score)
@@ -35,5 +36,10 @@ public class LeaderboardRanking : MonoBehaviour
         Score = score;
         _scoreText.text = Score.ToString();
 
+    }
+
+    public void UpdateOrder()
+    {
+        _rankText.text = $"{transform.GetSiblingIndex() + 1}";
     }
 }
