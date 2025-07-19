@@ -2406,6 +2406,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4330836f393f8e4d97a591ce93f4dae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _settingsButton: {fileID: 775395376}
+  _settingsMenuTransform: {fileID: 2055716278}
+  _blackBackgroundImage: {fileID: 1975740270}
+  _vsyncButton: {fileID: 735290974}
+  _vsyncTick: {fileID: 364495564}
+  _leaveGameButton: {fileID: 375401241}
+  _keepPlayingButton: {fileID: 1416325154}
+  _copyCodeButton: {fileID: 694802572}
+  _copiedImage: {fileID: 1044800712}
+  _joinCodeText: {fileID: 1250243619}
+  _tickSprite: {fileID: 21300000, guid: 428a23dc33af54c669b1a744aee311fc, type: 3}
+  _crossSprite: {fileID: 21300000, guid: 669f81cf87dff432f947ab0bdf77bd6e, type: 3}
+  _animationDuration: 0.3
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
