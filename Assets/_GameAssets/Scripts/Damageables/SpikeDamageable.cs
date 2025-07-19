@@ -4,6 +4,7 @@ using UnityEngine;
 public class SpikeDamageable : NetworkBehaviour, IDamageable
 {
     [SerializeField] private MysteryBoxSkillsSO _mysteryBoxSkill;
+    [SerializeField] private GameObject _explosionParticlesPrefab;
 
     public override void OnNetworkSpawn()
     {
@@ -36,6 +37,7 @@ public class SpikeDamageable : NetworkBehaviour, IDamageable
     public void Damage(PlayerVehicleController playerVehicleController,string playerName)
     {
         playerVehicleController.CrashVehicle();
+        PlayParticlesRpc(playerVehicleController.transform.position);
         KillScreenUI.Instance.SetSmashedUI(playerName, _mysteryBoxSkill.SkillData.RespawnTimer);
 
 
@@ -47,6 +49,15 @@ public class SpikeDamageable : NetworkBehaviour, IDamageable
         if (IsServer)
         {
             Destroy(gameObject);
+        }
+    }
+    [Rpc(SendTo.Server)]
+    private void PlayParticlesRpc(Vector3 VehiclePosition = default)
+    {
+        if (IsServer)
+        {
+            GameObject explosionParticlesInstance = Instantiate(_explosionParticlesPrefab, VehiclePosition, Quaternion.identity);
+            explosionParticlesInstance.GetComponent<NetworkObject>().Spawn();
         }
     }
 

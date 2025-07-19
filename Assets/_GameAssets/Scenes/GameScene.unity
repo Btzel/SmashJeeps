@@ -208,6 +208,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 4062273523
@@ -414,6 +426,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1400069216
@@ -890,6 +914,10 @@ PrefabInstance:
     - target: {fileID: 2884772932847469886, guid: dcf725a7e11e16c4c8c3e7f297d609fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7568195568896207334, guid: dcf725a7e11e16c4c8c3e7f297d609fe, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7581831830911250316, guid: dcf725a7e11e16c4c8c3e7f297d609fe, type: 3}
       propertyPath: m_Name
@@ -2009,6 +2037,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3056898368
@@ -2215,6 +2255,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 33144099
@@ -2641,6 +2693,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3813360687
@@ -3095,6 +3159,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3273270112
@@ -4531,6 +4607,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3949286425
@@ -5847,6 +5935,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 777021524
@@ -5953,6 +6053,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1439340709
@@ -6023,6 +6135,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 315138549
@@ -6246,6 +6370,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3804627093
@@ -6316,6 +6452,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 2896567932
@@ -6764,6 +6912,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 360344152
@@ -6834,6 +6994,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 726945763
@@ -6935,6 +7107,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 4275492377
@@ -7005,6 +7189,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1800702519
@@ -7075,6 +7271,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 308104927
@@ -7266,6 +7474,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3462987987
@@ -7509,6 +7729,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 95a69ce873b969748b554d80aa327932, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 303233940
@@ -9745,6 +9977,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: _mysteryBoxSkills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685574634055802828, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
+      propertyPath: '_mysteryBoxSkills.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 862f47d9b6d7698419328462f307e22f, type: 2}
     - target: {fileID: 4877139562774927903, guid: 38493865392732f4ea10b64b8c5d5e20, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 825129440

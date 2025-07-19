@@ -191,7 +191,7 @@ MonoBehaviour:
   _raycastDistance: 0.5
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
 --- !u!114 &4265895413475751549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   _mysteryBoxSkill: {fileID: 11400000, guid: 1ca2ef8a53a14104ebdb649d32e7ea62, type: 2}
+  _explosionParticlesPrefab: {fileID: 7347659636357233742, guid: 4c096903c2f4c324ebb42738d615005c, type: 3}
 --- !u!114 &6749802485044963202
 MonoBehaviour:
   m_ObjectHideFlags: 0
