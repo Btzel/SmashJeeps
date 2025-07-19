@@ -25,7 +25,7 @@ public class StartingGameUI : NetworkBehaviour
     {
         Instance = this;
     }
-
+    
 
     public override void OnNetworkSpawn()
     {
@@ -48,7 +48,7 @@ public class StartingGameUI : NetworkBehaviour
             StartCoroutine(CountdownCoroutine());
             WaitingForPlayersUI.Instance.Hide();
         }
-        
+
     }
 
     private void OnPlayersLoadedChanged(int oldPlayerCount, int newPlayerCount)
