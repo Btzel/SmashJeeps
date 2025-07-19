@@ -1,12 +1,19 @@
 using DG.Tweening;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private ScoreTablePlayer _scoreTablePlayerPrefab;
+    [SerializeField] private Transform _scoreTableParentTransform;
+    [SerializeField] private LeaderBoardUI _leaderBoardUI;
     [SerializeField] private Image _gameOverBackgroundImage;
     [SerializeField] private RectTransform _gameOverTransform;
     [SerializeField] private RectTransform _scoreTableTransform;
@@ -21,8 +28,21 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private float _scaleDuration;
     private void Awake()
     {
+        _mainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
+
+
         _mainMenuButtonTransform = _mainMenuButton.GetComponent<RectTransform>();
         _winnerTransform = _winnerText.GetComponent<RectTransform>();
+    }
+
+    private void OnMainMenuButtonClicked()
+    {
+        if (NetworkManager.Singleton.IsHost)
+        {
+            HostSingleton.Instance.HostGameManager.ShutDown();
+        }
+
+        ClientSingleton.Instance.ClientGameManager.Disconnect();
     }
 
     private void Start()
@@ -35,7 +55,7 @@ public class GameOverUI : MonoBehaviour
 
     private void GameManager_OnGameStateChanged(GameState gameState)
     {
-        if(gameState == GameState.GameOver)
+        if (gameState == GameState.GameOver)
         {
             AnimateGameOver();
         }
@@ -63,5 +83,40 @@ public class GameOverUI : MonoBehaviour
                 _winnerTransform.DOScale(1f, _scaleDuration).SetEase(Ease.OutBack);
             });
         });
+
+        PopulateGameOverLeaderboard();
+    }
+
+    private void PopulateGameOverLeaderboard()
+    {
+        var leaderboardData = _leaderBoardUI.GetLeaderboardData().OrderByDescending(x => x.Score).ToList();
+
+        HashSet<ulong> existingClientIds = new HashSet<ulong>();
+
+        for (int i = 0; i < leaderboardData.Count; i++)
+        {
+            var entry = leaderboardData[i];
+
+            if (existingClientIds.Contains(entry.ClientId)) continue;
+
+            ScoreTablePlayer scoreTablePlayerInstance = Instantiate(_scoreTablePlayerPrefab, _scoreTableParentTransform);
+            bool isOwner = entry.ClientId == NetworkManager.Singleton.LocalClientId;
+            int rank = i + 1;
+
+            scoreTablePlayerInstance.SetScoreTableData(rank.ToString(), entry.PlayerName,
+                entry.Score.ToString(), isOwner);
+
+            existingClientIds.Add(entry.ClientId);
+
+        }
+
+        SetWinnersName();
+
+    }
+
+    private void SetWinnersName()
+    {
+        string winnersName = _leaderBoardUI.GetWinnersName();
+        _winnerText.text = winnersName + "SMASHED Y'ALL";
     }
 }

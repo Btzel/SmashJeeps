@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -9,11 +10,13 @@ public class LeaderBoardUI : NetworkBehaviour
 
     [SerializeField] private LeaderboardRanking _leaderboardRankingPrefab;
     [SerializeField] private Transform _rankingPrefab;
+
+    [SerializeField] private TMP_Text _rankText;
     private NetworkList<LeaderboardEntitiesSerializable> _leaderboardEntityList;
 
     private List<LeaderboardRanking> _leaderboardRankingList = new List<LeaderboardRanking>();
 
-    
+
     void Awake()
     {
         _leaderboardEntityList = new NetworkList<LeaderboardEntitiesSerializable>();
@@ -54,7 +57,7 @@ public class LeaderBoardUI : NetworkBehaviour
         switch (changeEvent.Type)
         {
             case NetworkListEvent<LeaderboardEntitiesSerializable>.EventType.Add:
-                if(_leaderboardRankingList.Any(x => x.ClientId == changeEvent.Value.ClientId)) return;
+                if (_leaderboardRankingList.Any(x => x.ClientId == changeEvent.Value.ClientId)) return;
                 LeaderboardRanking leaderboardRankingInstance
                     = Instantiate(_leaderboardRankingPrefab, _rankingPrefab);
                 leaderboardRankingInstance.SetData(
@@ -89,6 +92,32 @@ public class LeaderBoardUI : NetworkBehaviour
         }
 
         UpdateSortingOrder();
+        UpdatePlayerRankText();
+    }
+
+
+    private void UpdatePlayerRankText()
+    {
+        LeaderboardRanking myRanking
+            = _leaderboardRankingList.FirstOrDefault(x => x.ClientId == NetworkManager.Singleton.LocalClientId);
+
+        if (myRanking == null) return;
+
+        int rank = myRanking.transform.GetSiblingIndex() + 1;
+        string rankSuffix = GetRankSuffix(rank);
+
+        _rankText.text = $"{rank}<sup>{rankSuffix}</sup>/{_leaderboardRankingList.Count}";
+    }
+
+    private string GetRankSuffix(int rank)
+    {
+        return rank switch
+        {
+            1 => "st",
+            2 => "nd",
+            3 => "rd",
+            _ => "th"
+        };
     }
 
     private void UpdateSortingOrder()
@@ -100,7 +129,7 @@ public class LeaderBoardUI : NetworkBehaviour
             _leaderboardRankingList[i].transform.SetSiblingIndex(i);
             _leaderboardRankingList[i].UpdateOrder();
         }
-        
+
     }
 
     private void HandlePlayerSpawned(PlayerNetworkController playerNetworkController)
@@ -156,7 +185,42 @@ public class LeaderBoardUI : NetworkBehaviour
                 playerNetworkController.OwnerClientId,
                 newScore
             );
+    }
 
 
+    public List<LeaderboardEntitiesSerializable> GetLeaderboardData()
+    {
+        List<LeaderboardEntitiesSerializable> leaderboardData = new List<LeaderboardEntitiesSerializable>();
+
+        foreach (var entity in _leaderboardEntityList)
+        {
+            leaderboardData.Add(entity);
+        }
+
+        return leaderboardData;
+    }
+
+    public string GetWinnersName()
+    {
+        if (_leaderboardRankingList.Count > 0)
+        {
+            return _leaderboardRankingList[0].GetPlayerName();
+        }
+
+        return "No Winner";
+    }
+
+    public override void OnNetworkDespawn()
+    {
+        if (IsClient)
+        {
+            _leaderboardEntityList.OnListChanged -= HandleLeaderboardEntitiesChanged;
+        }
+
+        if (IsServer)
+        {
+            PlayerNetworkController.OnPlayerSpawned -= HandlePlayerSpawned;
+            PlayerNetworkController.OnPlayerDespawned -= HandlePlayerDespawned;
+        }
     }
 }

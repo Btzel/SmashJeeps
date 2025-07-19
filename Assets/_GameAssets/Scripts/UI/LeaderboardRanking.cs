@@ -42,4 +42,6 @@ public class LeaderboardRanking : MonoBehaviour
     {
         _rankText.text = $"{transform.GetSiblingIndex() + 1}";
     }
+
+    public string GetPlayerName() => _playerName.ToString();
 }

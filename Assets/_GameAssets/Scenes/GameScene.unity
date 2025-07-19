@@ -4763,6 +4763,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   _leaderboardRankingPrefab: {fileID: 2964910437096086945, guid: 10fb5204dd110ef4db0fa3800d9dacd0, type: 3}
   _rankingPrefab: {fileID: 1079643451}
+  _rankText: {fileID: 187214552}
 --- !u!114 &2049120447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5037,6 +5038,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04199860a8ab05e44a0066a64bcb14ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scoreTablePlayerPrefab: {fileID: 5886341831461069080, guid: c6c968659c75ae747a8e5d78ef86a058, type: 3}
+  _scoreTableParentTransform: {fileID: 2115198515}
+  _leaderBoardUI: {fileID: 2049120446}
   _gameOverBackgroundImage: {fileID: 1706442440}
   _gameOverTransform: {fileID: 529781133}
   _scoreTableTransform: {fileID: 354884893}
