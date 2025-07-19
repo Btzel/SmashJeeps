@@ -86,9 +86,11 @@ public class PlayerInteractionController : NetworkBehaviour
     [Rpc(SendTo.SpecifiedInParams)]
     private void SetKillerUIRpc(ulong killerClientId,FixedString32Bytes playerName, RpcParams rpcParams)
     {
-        if(NetworkManager.Singleton.ConnectedClients.TryGetValue(killerClientId, out var killerClient))
+        if (NetworkManager.Singleton.ConnectedClients.TryGetValue(killerClientId, out var killerClient))
         {
             KillScreenUI.Instance.SetSmashUI(playerName.ToString());
+            killerClient.PlayerObject.GetComponent<PlayerScoreController>().AddScore(1);
+             
         }
     }
 

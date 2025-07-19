@@ -1,6 +1,8 @@
-using System;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
+
 
 public class LeaderBoardUI : NetworkBehaviour
 {
@@ -9,6 +11,7 @@ public class LeaderBoardUI : NetworkBehaviour
     [SerializeField] private Transform _rankingPrefab;
     private NetworkList<LeaderboardEntitiesSerializable> _leaderboardEntityList;
 
+    private List<LeaderboardRanking> _leaderboardRankingList = new List<LeaderboardRanking>();
 
     
     void Awake()
@@ -35,6 +38,7 @@ public class LeaderBoardUI : NetworkBehaviour
                     entity.PlayerName,
                     entity.Score
                 );
+                _leaderboardRankingList.Add(leaderboardRankingInstance);
             }
         }
 
@@ -53,8 +57,6 @@ public class LeaderBoardUI : NetworkBehaviour
 
     private void HandleLeaderboardEntitiesChanged(NetworkListEvent<LeaderboardEntitiesSerializable> changeEvent)
     {
-        
-
         switch (changeEvent.Type)
         {
             case NetworkListEvent<LeaderboardEntitiesSerializable>.EventType.Add:
@@ -65,6 +67,19 @@ public class LeaderBoardUI : NetworkBehaviour
                     changeEvent.Value.PlayerName,
                     changeEvent.Value.Score
                 );
+                _leaderboardRankingList.Add(leaderboardRankingInstance);
+                break;
+            case NetworkListEvent<LeaderboardEntitiesSerializable>.EventType.Value:
+                LeaderboardRanking leaderboardRankingToUpdate
+                    = _leaderboardRankingList.FirstOrDefault(
+                        x => x.ClientId == changeEvent.Value.ClientId
+                    );
+                
+
+                if (leaderboardRankingToUpdate != null)
+                {
+                    leaderboardRankingToUpdate.UpdateScore(changeEvent.Value.Score);
+                }
                 break;
         }
     }
@@ -78,8 +93,30 @@ public class LeaderBoardUI : NetworkBehaviour
             Score = 0,
 
         });
+
+        playerNetworkController.GetPlayerScoreController().PlayerScore.OnValueChanged +=
+            (oldScore, newScore) => HandleScoreChanged(
+                playerNetworkController.OwnerClientId,
+                newScore
+            );
         
-        
+    }
+
+    private void HandleScoreChanged(ulong clientId, int newScore)
+    {
+        Debug.Log("Score Has Changed");
+        for (int i = 0; i < _leaderboardEntityList.Count; i++)
+        {
+            if (_leaderboardEntityList[i].ClientId != clientId) continue;
+
+            _leaderboardEntityList[i] = new LeaderboardEntitiesSerializable
+            {
+                ClientId = _leaderboardEntityList[i].ClientId,
+                PlayerName = _leaderboardEntityList[i].PlayerName,
+                Score = newScore
+            };
+            return;
+        }
     }
 
     private void HandlePlayerDespawned(PlayerNetworkController playerNetworkController)
@@ -91,10 +128,16 @@ public class LeaderBoardUI : NetworkBehaviour
             if (entity.ClientId != playerNetworkController.OwnerClientId) continue;
 
             _leaderboardEntityList.Remove(entity);
-            
+
             break;
         }
 
-        
+        playerNetworkController.GetPlayerScoreController().PlayerScore.OnValueChanged -=
+            (oldScore, newScore) => HandleScoreChanged(
+                playerNetworkController.OwnerClientId,
+                newScore
+            );
+
+
     }
 }

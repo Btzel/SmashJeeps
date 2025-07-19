@@ -15,11 +15,12 @@ public class PlayerNetworkController : NetworkBehaviour
     [Header("References")]
     [SerializeField] private CinemachineCamera _playerCamera;
     [SerializeField] private TMP_Text _playerNameText;
-
+    [SerializeField] private PlayerScoreController _playerScoreController;
 
     private PlayerVehicleController _playerVehicleController;
     private PlayerSkillController _playerSkillController;
     private PlayerInteractionController _playerInteractionController;
+    
     public NetworkVariable<FixedString32Bytes> PlayerName = new NetworkVariable<FixedString32Bytes>();
     public override void OnNetworkSpawn()
     {
@@ -40,6 +41,7 @@ public class PlayerNetworkController : NetworkBehaviour
         _playerVehicleController = GetComponent<PlayerVehicleController>();
         _playerSkillController = GetComponent<PlayerSkillController>();
         _playerInteractionController = GetComponent<PlayerInteractionController>();
+        
     }
 
     public void OnPlayerRespawned()
@@ -53,6 +55,11 @@ public class PlayerNetworkController : NetworkBehaviour
     private void SetPlayerNameRpc()
     {
         _playerNameText.text = PlayerName.Value.ToString();
+    }
+
+    public PlayerScoreController GetPlayerScoreController()
+    {
+        return _playerScoreController;
     }
 
     public override void OnNetworkDespawn()

@@ -391,6 +391,7 @@ GameObject:
   - component: {fileID: 2526413926193524612}
   - component: {fileID: 1497574043565811172}
   - component: {fileID: 751234130666201192}
+  - component: {fileID: 8615166717907072447}
   - component: {fileID: 283996414135697453}
   - component: {fileID: 5643267596438574388}
   - component: {fileID: 7554556524211166694}
@@ -551,6 +552,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db83e971d021a547b8a1f5c0b5d26af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  _health: 0
+  _maxHealth: 100
+--- !u!114 &8615166717907072447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7033937159113744388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8882630d61c43394e8c364ea212f5c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  PlayerScore:
+    m_InternalValue: 0
 --- !u!114 &283996414135697453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,6 +585,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   _playerCamera: {fileID: 6065070723820614831}
   _playerNameText: {fileID: 8465269982029967519}
+  _playerScoreController: {fileID: 8615166717907072447}
   PlayerName:
     m_InternalValue:
       utf8LengthInBytes: 0
